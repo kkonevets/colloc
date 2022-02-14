@@ -1,0 +1,97 @@
+syntax = "proto3";
+
+package grams;
+
+message Header {
+  string msg_type = 1;
+  uint64 total = 2;
+}
+
+message Unigram {
+  bytes str = 1;
+  fixed32 id = 2;
+  fixed32 weight = 3;
+}
+
+message Bigram {
+  fixed32 id1 = 1;
+  fixed32 id2 = 2;
+  fixed32 weight = 3;
+}
+
+message Trigram {
+  fixed32 id1 = 1;
+  fixed32 id2 = 2;
+  fixed32 id3 = 3;
+  fixed32 weight = 4;
+}
+
+message LemId {
+  bytes str = 1;
+  fixed32 id = 2;
+}
+
+message IdFreq {
+  fixed32 id = 1;
+  fixed32 weight = 2;
+}
+
+message LemFreq {
+  bytes str = 1;
+  fixed32 id = 2;
+  fixed32 weight = 3;
+}
+
+message Phrase {
+  repeated fixed32 ids = 1;
+}
+
+//////////////////////////////////
+
+message Lem2AndWords {
+  fixed32 lid1 = 1;
+  fixed32 lid2 = 2;
+  fixed32 wid1 = 3;
+  fixed32 wid2 = 4;
+  fixed32 count = 5;
+}
+
+message Lem2Group {
+  fixed32 lid1 = 1;
+  fixed32 lid2 = 2;
+  double weight = 3;
+
+  message Case {
+    fixed32 wid1 = 1;
+    fixed32 wid2 = 2;
+    fixed32 count = 3;
+  }
+
+  repeated Case cases = 5;
+}
+
+message Lem3AndWords {
+  fixed32 lid1 = 1;
+  fixed32 lid2 = 2;
+  fixed32 lid3 = 3;
+  fixed32 wid1 = 4;
+  fixed32 wid2 = 5;
+  fixed32 wid3 = 6;
+  fixed32 count = 7;
+}
+
+message Lem3Group {
+  fixed32 lid1 = 1;
+  fixed32 lid2 = 2;
+  fixed32 lid3 = 3;
+  double weight = 4;
+
+  message Case {
+    fixed32 wid1 = 1;
+    fixed32 wid2 = 2;
+    fixed32 wid3 = 3;
+    fixed32 count = 4;
+  }
+
+  repeated Case cases = 5;
+}
